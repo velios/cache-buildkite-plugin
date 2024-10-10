@@ -161,6 +161,13 @@ function cache() {
 
   if [ ! -f "$TAR_FILE" ]; then
     TMP_FILE="$(mktemp)"
+    cd ../../..
+    ls
+    echo "Hi1"
+    cd ..
+    ls
+    echo "Hi2"
+    pwd
     tar "${BK_TAR_ARGS[@]}" "${TMP_FILE}" ${TAR_TARGETS}
     mv -f "${TMP_FILE}" "${TAR_FILE}"
     aws s3 cp ${BK_CUSTOM_AWS_ARGS} "${TAR_FILE}" "s3://${BUCKET}/$(basename "${TAR_FILE}")"
