@@ -9,7 +9,8 @@ BK_CACHE_SAVE_CACHE=${BUILDKITE_PLUGIN_CACHE_S3_SAVE_CACHE:-false}
 BK_ALWAYS_CACHE=${BUILDKITE_PLUGIN_CACHE_ALWAYS:-false}
 BK_CACHE_LOCAL_PATH="${BUILDKITE_PLUGIN_CACHE_S3_SAVE_CACHE_DIR:-/tmp}"
 BK_TAR_ARGS=()
-BK_TAR_ADDITIONAL_ARGS="--ignore-failed-read"
+# BK_TAR_ADDITIONAL_ARGS="--ignore-failed-read"
+BK_TAR_ADDITIONAL_ARGS=""
 BK_TAR_EXTENSION="tar"
 BK_TAR_EXTRACT_ARGS="-xf"
 
@@ -18,11 +19,11 @@ if [[ ! "$OSTYPE" == "darwin"* ]]; then
     exec 2>/dev/null
     readlink "/proc/$$/exe"
   )
-  # case "$shell_exec" in
-  # */busybox)
-  #   BK_TAR_ADDITIONAL_ARGS=""
-  #   ;;
-  # esac
+  case "$shell_exec" in
+  */busybox)
+    BK_TAR_ADDITIONAL_ARGS=""
+    ;;
+  esac
 
   if [[ ! "${BK_CACHE_COMPRESS:-false}" =~ (false) ]]; then
     number_re='^[0-9]+$'
