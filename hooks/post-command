@@ -23,7 +23,13 @@ fi
 
 cd ..
 ls
-cd /root/.m2
+cd ..
+ls
+cd ..
+ls
+cd ..
+ls
+cd /buildkite/builds/m2
 ls
 
 if [[ "${BUILDKITE_PLUGIN_CACHE_DEBUG:-false}" =~ (true|on|1) ]]; then
