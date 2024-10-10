@@ -87,6 +87,8 @@ function info() {
 
 function source_locating() {
   echo -e "${BK_LOG_PREFIX}🔍 Locating source: $1"
+  find / -type d -name ".m2"
+  find . -type d -name ".m2"
 }
 
 function cache_locating() {
