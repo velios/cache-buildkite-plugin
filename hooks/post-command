@@ -21,6 +21,10 @@ else
   echo "Please use 'id' key to identify caches"
 fi
 
+ls
+find / -type d -name ".m2"
+find . -type d -name ".m2"
+
 if [[ "${BUILDKITE_PLUGIN_CACHE_DEBUG:-false}" =~ (true|on|1) ]]; then
   set -x
 fi
