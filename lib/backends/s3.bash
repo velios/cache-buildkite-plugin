@@ -18,11 +18,11 @@ if [[ ! "$OSTYPE" == "darwin"* ]]; then
     exec 2>/dev/null
     readlink "/proc/$$/exe"
   )
-  case "$shell_exec" in
-  */busybox)
-    BK_TAR_ADDITIONAL_ARGS=""
-    ;;
-  esac
+  # case "$shell_exec" in
+  # */busybox)
+  #   BK_TAR_ADDITIONAL_ARGS=""
+  #   ;;
+  # esac
 
   if [[ ! "${BK_CACHE_COMPRESS:-false}" =~ (false) ]]; then
     number_re='^[0-9]+$'
